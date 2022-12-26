@@ -1,0 +1,14 @@
+require("system")
+require("kultie")
+
+local M = class("TestLuaMod", target)
+function M:Init() end
+function M:Dispose() end
+
+function M:Key_Press(subject, context)
+    print('Instance Value '.. self.string_value)
+    print('Subject Value '..subject.subjectValue)
+    print('Context Value '..context.contextValue)
+    print('----------------------------------------')
+end
+return M

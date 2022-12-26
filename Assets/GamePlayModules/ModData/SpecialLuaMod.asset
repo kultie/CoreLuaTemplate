@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fb171ee30ecc5243ba3e0208b3e1672, type: 3}
+  m_Name: SpecialLuaMod
+  m_EditorClassIdentifier: 
+  variables:
+    variables:
+    - name: string_value
+      objectValue: {fileID: 0}
+      dataValue: U3BlY2lhbCBIZWxsbyBXb3JsZA==
+      variableType: 6
+  scriptFile:
+    scriptFile: {fileID: 4900000, guid: 5da140afcec425b4296484030c20b6e7, type: 3}
+  Key: special

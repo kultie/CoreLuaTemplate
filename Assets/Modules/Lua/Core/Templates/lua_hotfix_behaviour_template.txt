@@ -1,0 +1,39 @@
+require("system")
+require("kultie")
+
+--[[
+    https://github.com/Tencent/xLua/blob/master/Assets/XLua/Doc/Hotfix_EN.md
+    Example 
+    These are for hotfix class
+    xlua.hotfix(CS.[Namespace].ClassName),{
+        ['.ctor'] = function() end constructor <<< HOT FIX CONSTRUCTOR
+        get_[property] = function(self,v) end <<< HOT FIX GET VALUE OF PROPERTY
+        set_[property] = function(self,v) end <<< HOT FIX SET VALUE OF PROPERTY
+        add_[event] = function(self,callback) end <<< HOT FIX ADD CALLBACK TO EVENT
+        remove_[event] = function(self,callback) end <<< HOT FIX REMOVE CALLBACK TO EVENT
+        [Function Name] = function(self,[other parameter]) << HOT FIX FUNCTION NAME
+        Finalize = function(self) << HOT FIX DESTRUCTOR
+    }
+
+    Bellow are template for hotfixing a monobehavior
+    Remove or add function as neccessery, every instance function must have self as first parameter
+]]--
+
+xlua.hotfix(CS.[BEHAVIOR_NAME],{
+    Awake = function(self)
+    end;
+    Enable = function(self)
+    end;
+    Start = function(self)
+    end;
+    Update = function(self)
+    end;
+    FixedUpdate = function(self)
+    end;
+    LateUpdate = function(self)
+    end;
+    Disable = function(self)
+    end;
+    Destroy = function(self)
+    end;
+})

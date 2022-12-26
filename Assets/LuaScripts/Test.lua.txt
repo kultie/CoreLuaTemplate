@@ -1,0 +1,31 @@
+require("system")
+require("kultie")
+
+local M = class("Test", target)
+
+-- Core Remove any method if not needed --
+function M:Awake()
+end
+
+function M:Enable()
+end
+
+function M:Start()
+end
+
+function M:Update()
+end
+
+function M:FixedUpdate()
+end
+
+function M:LateUpdate()
+end
+
+function M:Disable()
+end
+
+function M:Destroy()
+end
+-- End of core --
+return M

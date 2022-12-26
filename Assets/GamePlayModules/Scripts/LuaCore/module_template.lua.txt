@@ -1,0 +1,9 @@
+require("system")
+require("kultie")
+
+local M = class("[BEHAVIOR_NAME]", target)
+function M:Init()
+end
+function M:Dispose()
+end
+return M

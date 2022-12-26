@@ -1,0 +1,53 @@
+require("system")
+require("kultie")
+
+local M = class("[BEHAVIOR_NAME]", target)
+
+-- Core Remove any method if not needed --
+function M:Awake()
+end
+
+function M:Enable()
+end
+
+function M:Start()
+end
+
+function M:Update()
+end
+
+function M:FixedUpdate()
+end
+
+function M:LateUpdate()
+end
+
+function M:Disable()
+end
+
+function M:Destroy()
+end
+-- End of core --
+
+-- 2D Physics Remove any method if not needed --
+
+function M:OnTriggerEnter2D(other)
+end
+
+function M:OnTriggerStay2D(other)
+end
+
+function M:OnTriggerExit2D(other)
+end
+
+function M:OnCollisionEnter2D(other)
+end
+
+function M:OnCollisionStay2D(other)
+end
+
+function M:OnCollisionExit2D(other)
+end
+
+-- End of 2D Phyiscs --
+return M

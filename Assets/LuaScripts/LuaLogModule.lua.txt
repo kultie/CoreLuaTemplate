@@ -1,0 +1,38 @@
+require("system")
+require("kultie")
+
+local EventCentral = CS.Kultie.GamePlayModule.GamePlayEventCentral
+
+local M = class("LuaLogModule", target)
+-- Core Remove any method if not needed --
+function M:Init()
+    self.Delegates = {
+        ["ON_KEY_PRESS"] = function(context)
+            self:KeyPressReact(context)
+        end
+    }
+end
+
+function M:Dispose()
+end
+
+function M:KeyPressReact(context)
+    if context.keyCode == KeyCode.Space then
+        print(self.string_value)
+        print('Lua: Space pressed')
+        self:ASDASDA()
+    end
+end
+
+function M:ASDASDA()
+    print("Hello from lua")
+end
+
+function M:RegisterEvent()
+    for k,v in pairs(self.Delegates) do 
+        EventCentral.RegisterEventByString(k, v)
+    end
+end
+
+
+return M

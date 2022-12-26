@@ -1,0 +1,93 @@
+-- MAPPING STATIC FUNCTIONALITY --
+UE = CS.UnityEngine
+Tween = CS.DG.Tweening
+Input = UE.Input
+KeyCode = UE.KeyCode
+Color = UE.Color
+Vector2 = UE.Vector2
+Vector3 = UE.Vector3
+Time = UE.Time
+PlayerPrefs = UE.PlayerPrefs
+GameObject = UE.GameObject
+Camera = UE.Camera
+MainCamera = UE.Camera.main
+Quaternion = UE.Quaternion
+Utils = CS.Kultie.Lua.Utilities
+
+GenericCollection = CS.System.Collections.Generic
+-- MAPPING GENERIC INSTANCE --
+List = {}
+List.Sprite = GenericCollection.List(UE.Sprite)
+
+function Round(n)
+    if n < 0 then
+        return math.ceil(n - 0.5)
+    else
+        return math.floor(n + 0.5)
+    end
+end
+
+function ShallowClone(t)
+    local clone = {}
+    for k, v in pairs(t) do clone[k] = v end
+    return clone
+end
+
+function IsMobile()
+    local p = Utils.CurrentPlatform()
+    return p == 'Android' or p == 'IPhonePlayer'
+end
+
+function IsStandAlone()
+    local p = Utils.CurrentPlatform()
+    return p == 'WindowsPlayer' or p == 'LinuxPlayer' or p == 'OSXPlayer'
+end
+
+function IsEditor()
+    local p = Utils.CurrentPlatform()
+    return p == 'LinuxEditor' or p == 'WindowsEditor' or p == 'OSXEditor'
+end
+
+Timer = {}
+Timer.__index = Timer
+
+function Timer:Create()
+    local this = {timers = {}}
+    setmetatable(this, self)
+    return this
+end
+
+function Timer:After(delay, action, repeatable, tag)
+    self.timers[tag] = {
+        current_time = 0,
+        delay = delay,
+        action = action,
+        repeatable = repeatable
+    }
+end
+
+function Timer:Update(deltaTime)
+    local dt = deltaTime or Time.unscaledDeltaTime
+    for tag, timer in pairs(self.timers) do
+        timer.current_time = timer.current_time + dt
+        if timer.current_time > timer.delay then
+            if timer.action then timer.action() end
+            if timer.repeatable then
+                if type(timer.repeatable) == 'number' then
+                    timer.repeatable = timer.repeatable - 1
+                    if timer.repeatable >= 0 then
+                        timer.current_time = 0
+                    else
+                        self.timers[tag] = nil
+                    end -- this timer is done, destroy it
+                else
+                    timer.current_time = 0
+                end
+            end
+        end
+    end
+end
+
+function Timer:Remove(tag)
+    self.timers[tag] = nil
+end
